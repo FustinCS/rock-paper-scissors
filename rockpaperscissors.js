@@ -14,6 +14,11 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
 
     let userInput = playerSelection.toLowerCase();
+    
+    // check if input is valid
+    if (userInput != "rock" && userInput != "paper" && userInput != "scissors") {
+        return "Error: Please enter a valid answer!";
+    }
 
     // If it is a tie
     if (userInput === computerSelection) {
@@ -55,11 +60,16 @@ function game() {
         else if (gameResult.includes("Lose")) {
             computerScore++;
         }
+        else if (gameResult.includes("Error")) {
+            // we need to subtract one from the game score so it doesn't count it.
+            i--;
+        }
 
         console.log(gameResult);
         console.log(`Current Score: ${playerScore} - ${computerScore}`);
     }
 
+    // Final Scores
     if (playerScore == computerScore) {
         console.log(`The final score is tied! Final Score: ${playerScore} - ${computerScore}`)
     }
