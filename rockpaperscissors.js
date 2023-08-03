@@ -1,3 +1,7 @@
+
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3) + 1;
     if (randomNum === 1) {
@@ -11,74 +15,58 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-
-    let userInput = playerSelection.toLowerCase();
-    
-    // check if input is valid
-    if (userInput != "rock" && userInput != "paper" && userInput != "scissors") {
-        return "Error: Please enter a valid answer!";
-    }
-
-    // If it is a tie
-    if (userInput === computerSelection) {
-        return "It's a Tie! You both picked the same thing!";
-    }
-
-    if (userInput === "rock" && computerSelection === "paper") {
-        return "You Lose! Paper beats Rock!";
-    }
-    else if (userInput === "rock" && computerSelection === "scissors") {
-        return "You Win! Rock beats Scissors!";
-    }
-    else if (userInput === "paper" && computerSelection === "scissors") {
-        return "You Lose! Scissors beats Paper!";
-    }
-    else if (userInput === "paper" && computerSelection === "rock") {
-        return "You Win! Paper beats Rock!";
-    }
-    else if (userInput === "scissors" && computerSelection === "rock") {
-        return "You Lose! Rock beats Scissors!";
-    }
-    else if (userInput === "scissors" && computerSelection === "paper") {
-        return "You Win! Scissors beats Paper!";
-    }
-}
-
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt("Rock, Paper, or Scissors?");
-        let computerChoice = getComputerChoice();
-        let gameResult = playRound(playerChoice, computerChoice);
-
-        if (gameResult.includes("Win")) {
-            playerScore++;
-        }
-        else if (gameResult.includes("Lose")) {
-            computerScore++;
-        }
-        else if (gameResult.includes("Error")) {
-            // we need to subtract one from the game score so it doesn't count it.
-            i--;
-        }
-
-        console.log(gameResult);
-        console.log(`Current Score: ${playerScore} - ${computerScore}`);
-    }
-
-    // Final Scores
-    if (playerScore == computerScore) {
-        console.log(`The final score is tied! Final Score: ${playerScore} - ${computerScore}`)
-    }
-    else if (playerScore > computerScore) {
-        console.log(`You are the winner! Final Score: ${playerScore} - ${computerScore}`);
+function checkWinner() {
+    if (playerScore < 5 && computerScore < 5) {
+        return false;
     }
     else {
-        console.log(`The computer is the winner! Final Score: ${playerScore} - ${computerScore}`);
+        return true;
     }
 }
 
-game();
+function playRound(e) {
+
+    let userInput = e.target.id;
+    let computerSelection = getComputerChoice();
+    let score = document.querySelector(".score");
+
+    if (!checkWinner()) {  //when someone hasn't reached 5 score
+        if (userInput === "rock" && computerSelection === "paper") {
+            computerScore++;
+        }
+        else if (userInput === "rock" && computerSelection === "scissors") {
+            playerScore++;
+        }
+        else if (userInput === "paper" && computerSelection === "scissors") {
+            computerScore++;
+        }
+        else if (userInput === "paper" && computerSelection === "rock") {
+            playerScore++;
+        }
+        else if (userInput === "scissors" && computerSelection === "rock") {
+            computerScore++;
+        }
+        else if (userInput === "scissors" && computerSelection === "paper") {
+            playerScore++;
+        }
+        score.textContent = `${playerScore} - ${computerScore}`;
+    }
+    else {  //if someone has won the game
+        if(computerScore >= 5) {
+            alert("Computer Wins!");
+        }
+        else {
+            alert("Player Wins!");
+        }
+    }
+}
+
+
+const btnRock = document.querySelector("#rock");
+const btnPaper = document.querySelector("#paper");
+const btnScissors = document.querySelector("#scissors");
+const score = document.querySelector(".score");
+
+btnRock.addEventListener('click', playRound);
+btnPaper.addEventListener('click', playRound);
+btnScissors.addEventListener('click', playRound);
