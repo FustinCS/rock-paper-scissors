@@ -29,6 +29,7 @@ function playRound(e) {
     let userInput = e.target.id;
     let computerSelection = getComputerChoice();
     let score = document.querySelector(".score");
+    let winner = document.querySelector(".winner");
 
     if (!checkWinner()) {  //when someone hasn't reached 5 score
         if (userInput === "rock" && computerSelection === "paper") {
@@ -53,10 +54,10 @@ function playRound(e) {
     }
 
     if (computerScore >= 5) {
-        alert("Computer Wins!");
+        winner.textContent = "Computer Wins!";
     }
     else if (playerScore >= 5) {
-        alert("Player Wins!");
+        winner.textContent = "Player Wins!";
     }
 }
 

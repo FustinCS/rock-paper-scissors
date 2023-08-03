@@ -38,7 +38,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -49,7 +48,12 @@ body {
 }
 
 .winner {
-    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px;
+    height: 100px;
 }
 
 .button-container {
