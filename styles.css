@@ -5,24 +5,36 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: 'Knewave', cursive;
 }
 
 .header {
     display: flex;
-    background-color: rgb(95, 169, 238);
+    background-color: #414346;
     justify-content: center;
     align-items: center;
 }
 
+.header h1 {
+    color: white;
+    font-size: 56px;
+    font-weight: 100;
+}
+
 .footer {
-    background-color: rgb(95, 169, 238);
+    background-color: #646669;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.footer p {
+    color: white;
+    font-weight: 100;
+}
+
 .content {
-    background-color: rgb(167, 167, 167);
+    background-color: #414346;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -31,7 +43,13 @@ body {
 }
 
 .score {
+    color: white;
     padding: 24px;
+    font-size: 32px;
+}
+
+.winner {
+    height: 200px;
 }
 
 .button-container {
@@ -43,4 +61,16 @@ body {
 button {
     width: 150px;
     height: 150px;
+    font-size: 100px;
+    background-color: white;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(97, 223, 255);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+button:focus {
+    border-color: yellow;
+    transform: scale(1.1);
 }
