@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    background-color: rgb(95, 169, 238);
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    background-color: rgb(95, 169, 238);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    background-color: rgb(167, 167, 167);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    padding: 24px;
+}
+
+.button-container {
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+}
+
+button {
+    width: 150px;
+    height: 150px;
+}
