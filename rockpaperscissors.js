@@ -51,13 +51,12 @@ function playRound(e) {
         }
         score.textContent = `${playerScore} - ${computerScore}`;
     }
-    else {  //if someone has won the game
-        if(computerScore >= 5) {
-            alert("Computer Wins!");
-        }
-        else {
-            alert("Player Wins!");
-        }
+
+    if (computerScore >= 5) {
+        alert("Computer Wins!");
+    }
+    else if (playerScore >= 5) {
+        alert("Player Wins!");
     }
 }
 
